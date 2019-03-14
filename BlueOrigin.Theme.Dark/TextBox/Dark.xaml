@@ -1,0 +1,99 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:BlueOrigin.Theme.Dark"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:contols="clr-namespace:BlueOrigin.Wpf.Controls;assembly=BlueOrigin.Wpf.Controls"
+                    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Base/Dark.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--暗色普通输入框-->
+    <Style x:Key="darkInput" TargetType="{x:Type TextBox}">
+        <Setter Property="Background" Value="#121620"/>
+        <Setter Property="BorderBrush" Value="#FF161616"/>
+        <Setter Property="Foreground" Value="{StaticResource normalFontColor}"/>
+        <Style.Triggers>
+            <Trigger Property="IsFocused" Value="true">
+                <Setter Property="Background" Value="#a0a6a7"/>
+                <Setter Property="Foreground" Value="#313131"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Foreground" Value="Gray"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--暗色输入框-->
+    <Style x:Key="darkTbx" TargetType="{x:Type contols:NumberBox}" BasedOn="{StaticResource inputControlBaseStyle}">
+        <Setter Property="Background" Value="#FF111111"/>
+        <Setter Property="SpinnerSpinBackground" Value="#FF2D2D2D"/>
+        <Setter Property="BorderBrush" Value="#FF161616"/>
+        <Setter Property="InputBackground" Value="#FF111111"/>
+        <Setter Property="Height" Value="{StaticResource inputControlHeight}"/>
+        <Setter Property="Foreground" Value="{StaticResource normalFontColor}"/>
+        <Style.Triggers>
+            <Trigger Property="IsFocus" Value="true">
+                <Setter Property="InputBackground" Value="#FFF5F5F5"/>
+                <Setter Property="Foreground" Value="Black"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="InputBackground" Value="#FF212121"/>
+                <Setter Property="Foreground" Value="Gray"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!--暗色2输入框-->
+    <Style x:Key="dark2Tbx" TargetType="{x:Type contols:NumberBox}" BasedOn="{StaticResource inputControlBaseStyle}">
+        <Setter Property="Background" Value="#FF212121"/>
+        <Setter Property="SpinnerSpinBackground" Value="#FF2D2D2D"/>
+        <Setter Property="BorderBrush" Value="#FF161616"/>
+        <Setter Property="InputBackground" Value="#FF212121"/>
+        <Setter Property="Height" Value="22"/>
+        <Setter Property="Foreground" Value="{StaticResource normalFontColor}"/>
+        <Style.Triggers>
+            <Trigger Property="IsFocus" Value="true">
+                <Setter Property="InputBackground" Value="#FFF5F5F5"/>
+                <Setter Property="Foreground" Value="Black"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="InputBackground" Value="#FF212121"/>
+                <Setter Property="Foreground" Value="Gray"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!--亮色输入框-->
+    <Style x:Key="LightTbx" TargetType="{x:Type contols:NumberBox}" BasedOn="{StaticResource inputControlBaseStyle}">
+        <Setter Property="Background" Value="#FFF5F5F5"/>
+        <Setter Property="SpinnerSpinBackground" Value="#FFEBEBEB"/>
+        <Setter Property="BorderBrush" Value="#FF979797"/>
+        <Setter Property="InputBackground" Value="#FFF5F5F5"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Foreground" Value="Gray"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--暗色输入框-->
+    <Style x:Key="darkTextbox" TargetType="{x:Type contols:NumberBox}" BasedOn="{StaticResource inputControlBaseStyle}">
+        <Setter Property="Background" Value="#FF111111"/>
+        <Setter Property="Height" Value="22"/>
+        <Setter Property="SpinnerSpinBackground" Value="#FF2D2D2D"/>
+        <Setter Property="BorderBrush" Value="#FF161616"/>
+        <Setter Property="InputBackground" Value="#FF111111"/>
+        <Setter Property="Foreground" Value="{StaticResource normalFontColor}"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"></Setter>
+        <Style.Triggers>
+            <Trigger Property="IsFocus" Value="true">
+                <Setter Property="InputBackground" Value="#FFF5F5F5"/>
+                <Setter Property="Foreground" Value="Black"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <!--<Setter Property="InputBackground" Value="#FF212121"/>-->
+                <Setter Property="Foreground" Value="Gray"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

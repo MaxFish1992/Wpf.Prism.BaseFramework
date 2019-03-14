@@ -1,0 +1,30 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:local="clr-namespace:BlueOrigin.Wpf.Controls">
+    
+    <Style TargetType="{x:Type local:CheckBoxStyle}">
+        <Setter Property="IsChecked" Value="True"></Setter>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <DockPanel  Background="{TemplateBinding Background}" ToolTip="{TemplateBinding Content}" LastChildFill="False" Width="{TemplateBinding Width}">
+                        <Image Margin="2 0 0 0" DockPanel.Dock="Left" Height="20" Width="20" x:Name="_img"  Stretch="None" Source="pack://application:,,,/BlueOrigin.Wpf.Controls;component/Image/check.png"/>
+                        <TextBlock DockPanel.Dock="Left" Foreground="{TemplateBinding Foreground}" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding Content,RelativeSource={RelativeSource TemplatedParent}}" />
+                    </DockPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="_img" Property="Source" Value="pack://application:,,,/BlueOrigin.Wpf.Controls;component/Image/check.png"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter TargetName="_img" Property="Source" Value="pack://application:,,,/BlueOrigin.Wpf.Controls;component/Image/uncheck.png"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

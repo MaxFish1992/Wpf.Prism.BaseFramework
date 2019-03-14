@@ -1,0 +1,49 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:local="clr-namespace:BlueOrigin.Wpf.Controls">
+
+    <Style x:Key="switch" TargetType="{x:Type local:HighlightedSwitch}">
+        <Setter Property="Background" Value="Black"></Setter>
+        <Setter Property="Width" Value="40"></Setter>
+        <Setter Property="Height" Value="14"></Setter>
+        <Setter Property="BorderBrush" Value="#979797"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <!--<Setter Property="Padding" Value="1"/>-->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:HighlightedSwitch}">
+                    <Grid>
+                        <Border x:Name="PART_Border" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="3" SnapsToDevicePixels="True">
+                        </Border>
+                        <Border x:Name="PART_Switch_Left" Width="20" Height="14" HorizontalAlignment="Left" Background="#999999" SnapsToDevicePixels="True" CornerRadius="3,0,0,3"></Border>
+                        <Border x:Name="PART_Switch_Right" Visibility="Collapsed" Width="20" Height="14" HorizontalAlignment="Right" Background="#D8D8D8" SnapsToDevicePixels="True" CornerRadius="0,3,3,0"></Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="PART_Switch_Left" Property="Background" Value="White"/>
+                            <Setter TargetName="PART_Switch_Right" Property="Background" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="PART_Switch_Left" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_Switch_Right" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="BorderBrush" Value="#666666"></Setter>
+                            <Setter TargetName="PART_Switch_Left" Property="Background" Value="#666666"/>
+                            <Setter TargetName="PART_Switch_Right" Property="Background" Value="#666666"/>
+                        </Trigger>
+                        <Trigger Property="IsHighlighted" Value="true">
+                            <Setter TargetName="PART_Switch_Left" Property="Background" Value="#0CD562"/>
+                            <Setter TargetName="PART_Switch_Right" Property="Background" Value="#0CD562"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

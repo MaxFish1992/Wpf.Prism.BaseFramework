@@ -1,0 +1,73 @@
+<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="EnvDTE" #>
+<#@ import namespace="EnvDTE" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ output extension=".cs" encoding="utf-8" #>
+<#
+	/// 注意！
+	/// 发布需要手动修改下方的主版本号和次版本号
+    int major    = 1;// 主版本号
+    int minor    = 0;// 次版本号
+
+    int revision = 0;// 修订号
+    int build	 = 0;// 编译号
+	string date  = DateTime.Now.ToString("MMdd");// 日期
+
+	int oldMajor = 0;
+	int oldMinor = 0;
+	int oldRevision = 0;
+	int oldBuild = 0;
+	string oldBuildString = string.Empty;
+	string oldDate = string.Empty;
+ 
+	string assemblyVersion = String.Format("{0}.{1}.*",major,minor);
+
+	string template = string.Empty;
+	try
+	{
+		var generationAssemblyFileName = this.Host.ResolvePath("AssemblyInfo.cs");
+
+		template = File.ReadAllText(generationAssemblyFileName);
+		Regex pattern = new Regex("AssemblyFileVersion\\(\"(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<revision>\\d+)\\.(?<build>\\d+)\"\\)");
+		MatchCollection matches = pattern.Matches(template);
+		if(matches.Count == 1)
+		{
+			oldMajor = Convert.ToInt32(matches[0].Groups["major"].Value);
+			oldMinor = Convert.ToInt32(matches[0].Groups["minor"].Value);
+
+			revision = oldRevision = Convert.ToInt32(matches[0].Groups["revision"].Value);
+			var buildConfig = ((DTE)((IServiceProvider)this.Host).GetService(typeof(DTE))).Solution.SolutionBuild.ActiveConfiguration.Name;
+			if(buildConfig == "Release" )
+				revision++;
+
+			oldBuildString = matches[0].Groups["build"].Value;
+			build = oldBuild = Convert.ToInt32(oldBuildString);
+			build++;
+		}
+		
+		Regex proudctionPattern = new Regex("AssemblyInformationalVersion\\(\"(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<revision>\\d+)\\.(?<build>\\d+)\"\\)");
+		MatchCollection proudctionMatches = proudctionPattern.Matches(template);
+		if(proudctionMatches.Count == 1)
+		{
+			oldDate = proudctionMatches[0].Groups["build"].Value;
+		}
+	}
+	catch(Exception){}
+	
+    string oldFileVersion = String.Format("AssemblyFileVersion(\"{0}.{1}.{2}.{3}\")", oldMajor, oldMinor, oldRevision, oldBuildString);
+    string oldProductionVersion = String.Format("AssemblyInformationalVersion(\"{0}.{1}.{2}.{3}\")", oldMajor, oldMinor, oldRevision, oldDate);
+
+    string fileVersion = String.Format("AssemblyFileVersion(\"{0}.{1}.{2}.{3}\")", major, minor, revision, build);
+    string productionVersion = String.Format("AssemblyInformationalVersion(\"{0}.{1}.{2}.{3}\")", major, minor, revision, date);
+	
+	template = template.Replace(oldFileVersion, fileVersion);
+	template = template.Replace(oldProductionVersion, productionVersion);
+
+#>
+<#= template #>

@@ -1,0 +1,776 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:BlueOrigin.Theme.Dark"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:contols="clr-namespace:BlueOrigin.Wpf.Controls;assembly=BlueOrigin.Wpf.Controls"
+                    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Base/Dark.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="./Generic.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--颜色控制按钮-->
+    <Style x:Key="colorButton" TargetType="{x:Type Button}" BasedOn="{StaticResource channelButton}">
+        <Setter Property="Background" Value="#FF2C79D3"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Name="bg" BorderThickness="0" CornerRadius="3" Background="{TemplateBinding Background}">
+                        <Grid>
+                            <TextBlock Name="txt" Text="{TemplateBinding Content}" 
+                                   FontFamily="{TemplateBinding FontFamily}" 
+                                   FontSize="{StaticResource advancedFontSize}" 
+                                   FontStretch="{TemplateBinding FontStretch}" 
+                                   FontStyle="{TemplateBinding FontStyle}" 
+                                   FontWeight="{ TemplateBinding FontWeight}" 
+                                   Foreground="{TemplateBinding Foreground}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center" Margin="10,0,10,2"></TextBlock>
+                            <Grid x:Name="PART_Hover" Visibility="Collapsed" Background="White" Opacity="0.2"></Grid>
+                            <Grid x:Name="PART_Disabled" Visibility="Collapsed" Background="Black" Opacity="0.4"></Grid>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_Hover" Property="Visibility" Value="Visible"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="PART_Disabled" Property="Visibility" Value="Visible"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#FF999999" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="stopButton" TargetType="{x:Type Button}" BasedOn="{StaticResource channelButton}">
+        <Setter Property="Background" Value="#FFE81123"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Name="bg" BorderThickness="0" CornerRadius="3" Background="{TemplateBinding Background}">
+                        <Grid>
+                            <TextBlock Name="txt" Text="{TemplateBinding Content}" 
+                                   FontFamily="{TemplateBinding FontFamily}" 
+                                   FontSize="{StaticResource advancedFontSize}" 
+                                   FontStretch="{TemplateBinding FontStretch}" 
+                                   FontStyle="{TemplateBinding FontStyle}" 
+                                   FontWeight="{ TemplateBinding FontWeight}" 
+                                   Foreground="{TemplateBinding Foreground}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center" Margin="10,0,10,2"></TextBlock>
+                            <Grid x:Name="PART_Hover" Visibility="Collapsed" Background="White" Opacity="0.2"></Grid>
+                            <Grid x:Name="PART_Disabled" Visibility="Collapsed" Background="Black" Opacity="0.4"></Grid>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_Hover" Property="Visibility" Value="Visible"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="PART_Disabled" Property="Visibility" Value="Visible"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#FF999999" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--up按钮-->
+    <Style x:Key="upButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="22"/>
+        <Setter Property="Width" Value="22"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Chrome" BorderBrush="{TemplateBinding BorderBrush}" Background="#FF2D2D2D" SnapsToDevicePixels="True" CornerRadius="1.5">
+                        <Path x:Name="Arrow" Data="M0,8L5,0 10,8z" Fill="#FFD8D8D8" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Arrow" Property="Fill" Value="#FF4AA9EE"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Arrow" Property="Fill" Value="#FF4AA9EE"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Fill" TargetName="Arrow" Value="#FFAFAFAF"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--down按钮-->
+    <Style x:Key="downButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="22"/>
+        <Setter Property="Width" Value="22"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Chrome" BorderBrush="{TemplateBinding BorderBrush}" Background="#FF2D2D2D" SnapsToDevicePixels="True" CornerRadius="1.5">
+                        <Path x:Name="Arrow" Data="M0,0L5,8 10,0z" Fill="#FFD8D8D8" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Arrow" Property="Fill" Value="#FF4AA9EE"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Arrow" Property="Fill" Value="#FF4AA9EE"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Fill" TargetName="Arrow" Value="#FFAFAFAF"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--cross按钮-->
+    <Style x:Key="crossButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="22"/>
+        <Setter Property="Width" Value="22"/>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="SnapsToDevicePixels" Value="True"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Chrome" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <Path x:Name="Arrow" Stroke="#FFD8D8D8" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                              StrokeEndLineCap="Square" StrokeStartLineCap="Square" StrokeThickness="1.5" Stretch="Uniform">
+                            <Path.Data>
+                                <PathGeometry>
+                                    <PathGeometry.Figures>
+                                        <PathFigure StartPoint="0,0">
+                                            <LineSegment Point="25,25"></LineSegment>
+                                        </PathFigure>
+                                        <PathFigure StartPoint="25,0">
+                                            <LineSegment Point="0,25"></LineSegment>
+                                        </PathFigure>
+                                    </PathGeometry.Figures>
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Arrow" Property="Stroke" Value="#FF4AA9EE"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Arrow" Property="Stroke" Value="#FF4AA9EE"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Stroke" TargetName="Arrow" Value="#FFAFAFAF"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--合计按钮-->
+    <Style x:Key="totalButton" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Height" Value="16"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF666666"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FF000000"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#FFA7A7A7"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+    <!--颜色带图标控制按钮-->
+    <Style x:Key="colorIconButton" TargetType="{x:Type contols:IconButton}" BasedOn="{StaticResource channelButton}">
+        <Setter Property="ImageSize" Value="16"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type contols:IconButton}">
+                    <Border Name="bg" BorderThickness="0" CornerRadius="3" Background="{TemplateBinding Background}">
+                        <Grid>
+                            <StackPanel Orientation="Horizontal">
+                                <Grid Name="marginLeft" Width="10" Background="Transparent"></Grid>
+                                <Image Name="img" Source="{TemplateBinding NormalImage}" Height="{TemplateBinding ImageSize}"/>
+                                <Grid Name="spereator" Width="8" Background="Transparent"></Grid>
+                                <TextBlock Name="txt" Text="{TemplateBinding Content}" 
+                                   FontFamily="{TemplateBinding FontFamily}" 
+                                   FontSize="{StaticResource advancedFontSize}" 
+                                   FontStretch="{TemplateBinding FontStretch}" 
+                                   FontStyle="{TemplateBinding FontStyle}" 
+                                   FontWeight="{ TemplateBinding FontWeight}" 
+                                   Foreground="{TemplateBinding Foreground}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="0,0,0,2"></TextBlock>
+                                <Grid Name="marginRight" Width="10" Background="Transparent"></Grid>
+                            </StackPanel>
+                            <Grid x:Name="PART_Hover" Visibility="Collapsed" Background="White" Opacity="0.2"></Grid>
+                            <Grid x:Name="PART_Disabled" Visibility="Collapsed" Background="Black" Opacity="0.4"></Grid>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="NormalImage" Value="{x:Null}">
+                            <Setter TargetName="marginLeft" Property="Width" Value="8" />
+                            <Setter TargetName="spereator" Property="Width" Value="0" />
+                            <Setter TargetName="marginRight" Property="Width" Value="8" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_Hover" Property="Visibility" Value="Visible"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="PART_Disabled" Property="Visibility" Value="Visible"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="img" Property="Source" Value="{Binding DisabledImage, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <!--<Setter Property="Background" Value="#FF999999" />-->
+                            <Setter TargetName="PART_Disabled" Property="Visibility" Value="Visible"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--有边框无背景控制按钮-->
+    <Style x:Key="borderButton" TargetType="{x:Type contols:IconButton}">
+        <Setter Property="ImageSize" Value="24"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type contols:IconButton}">
+                    <Border Name="bg" BorderBrush="#FF747474" BorderThickness="1" CornerRadius="3" Background="{TemplateBinding Background}">
+                        <Grid>
+                            <StackPanel Orientation="Horizontal">
+                                <Grid Name="marginLeft" Width="10" Background="Transparent"></Grid>
+                                <Image Name="img" Source="{TemplateBinding NormalImage}" Height="{TemplateBinding ImageSize}"/>
+                                <Grid Name="spereator" Width="8" Background="Transparent"></Grid>
+                                <TextBlock Name="txt" Text="{TemplateBinding Content}" 
+                                   FontFamily="{TemplateBinding FontFamily}" 
+                                   FontSize="16" 
+                                   FontStretch="{TemplateBinding FontStretch}" 
+                                   FontStyle="{TemplateBinding FontStyle}" 
+                                   FontWeight="{ TemplateBinding FontWeight}" 
+                                   Foreground="White"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"></TextBlock>
+                                <Grid Name="marginRight" Width="10" Background="Transparent"></Grid>
+                            </StackPanel>
+                            <Grid x:Name="PART_Disabled" Visibility="Collapsed" Background="Black" Opacity="0.4"></Grid>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="NormalImage" Value="{x:Null}">
+                            <Setter TargetName="marginLeft" Property="Width" Value="8" />
+                            <Setter TargetName="spereator" Property="Width" Value="0" />
+                            <Setter TargetName="marginRight" Property="Width" Value="8" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="img" Property="Source" Value="{Binding HoverImage, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="bg" Property="BorderBrush" Value="#FF4AA9EE" />
+                            <Setter TargetName="txt" Property="Foreground" Value="#FF4AA9EE"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="img" Property="Source" Value="{Binding PressedImage, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="bg" Property="Background" Value="#FF0F8EE9" />
+                            <Setter TargetName="bg" Property="BorderBrush" Value="#FF0F8EE9" />
+                            <Setter TargetName="txt" Property="Foreground" Value="#FFFFFFFF"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="PART_Disabled" Property="Visibility" Value="Visible"></Setter>
+                            <!--<Setter TargetName="img" Property="Source" Value="{Binding DisabledImage, RelativeSource={RelativeSource Mode=TemplatedParent}}" />-->
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--无边框控制按钮-->
+    <Style x:Key="ItemButton" TargetType="{x:Type contols:IconButton}">
+        <Setter Property="ImageSize" Value="24"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type contols:IconButton}">
+                    <Grid Name="bg" Background="{TemplateBinding Background}">
+                        <StackPanel Orientation="Horizontal">
+                            <Grid Name="marginLeft" Width="5" Background="Transparent"></Grid>
+                            <Image Name="img" Source="{TemplateBinding NormalImage}" Height="{TemplateBinding ImageSize}"/>
+                            <Grid Name="spereator" Width="15" Background="Transparent"></Grid>
+                            <TextBlock Name="txt" Text="{TemplateBinding Content}" 
+                                   FontFamily="{TemplateBinding FontFamily}" 
+                                   FontSize="16" 
+                                   FontStretch="{TemplateBinding FontStretch}" 
+                                   FontStyle="{TemplateBinding FontStyle}" 
+                                   FontWeight="{ TemplateBinding FontWeight}" 
+                                   Foreground="{TemplateBinding Foreground}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"></TextBlock>
+                            <Grid Name="marginRight" Width="10" Background="Transparent"></Grid>
+                        </StackPanel>
+                        <Grid x:Name="PART_Disabled" Visibility="Collapsed" Background="Black" Opacity="0.4"></Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="NormalImage" Value="{x:Null}">
+                            <Setter TargetName="marginLeft" Property="Width" Value="8" />
+                            <Setter TargetName="spereator" Property="Width" Value="0" />
+                            <Setter TargetName="marginRight" Property="Width" Value="8" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="img" Property="Source" Value="{Binding HoverImage, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="bg" Property="Background" Value="#FF4AA9EE" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="img" Property="Source" Value="{Binding PressedImage, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="bg" Property="Background" Value="#FF0F8EE9" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="PART_Disabled" Property="Visibility" Value="Visible"></Setter>
+                            <!--<Setter TargetName="img" Property="Source" Value="{Binding DisabledImage, RelativeSource={RelativeSource Mode=TemplatedParent}}" />-->
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--图标控制按钮-->
+    <Style x:Key="iconButton" TargetType="{x:Type contols:IconButton}">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Width" Value="32"></Setter>
+        <Setter Property="Height" Value="32"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type contols:IconButton}">
+                    <Grid>
+                        <Border Name="bg" BorderThickness="0" Background="{TemplateBinding Background}">
+                            <Image Name="img" Height="{TemplateBinding Height}" Source="{TemplateBinding NormalImage}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <Grid Grid.RowSpan="2" x:Name="PART_Disabled" Visibility="Collapsed" Background="Black" Opacity="0.4"></Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="img" Property="Source" Value="{Binding HoverImage, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="img" Property="Source" Value="{Binding PressedImage, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="PART_Disabled" Property="Visibility" Value="Visible"></Setter>
+                            <!--<Setter TargetName="img" Property="Source" Value="{Binding DisabledImage, RelativeSource={RelativeSource Mode=TemplatedParent}}" />-->
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--颜色带图标控制按钮-->
+    <Style x:Key="controlIconButton" TargetType="{x:Type contols:IconButton}">
+        <Setter Property="ImageSize" Value="16"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type contols:IconButton}">
+                    <Border Name="bg" BorderThickness="0" CornerRadius="3" Background="{TemplateBinding Background}">
+                        <StackPanel Orientation="Horizontal">
+                            <Grid Name="marginLeft" Width="10" Background="Transparent"></Grid>
+                            <Image Name="img" Source="{TemplateBinding NormalImage}" Height="{TemplateBinding ImageSize}"/>
+                            <Grid Name="spereator" Width="8" Background="Transparent"></Grid>
+                            <TextBlock Name="txt" Text="{TemplateBinding Content}" 
+                                   FontFamily="{TemplateBinding FontFamily}" 
+                                   FontSize="{StaticResource advancedFontSize}" 
+                                   FontStretch="{TemplateBinding FontStretch}" 
+                                   FontStyle="{TemplateBinding FontStyle}" 
+                                   FontWeight="{ TemplateBinding FontWeight}" 
+                                   Foreground="{TemplateBinding Foreground}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="0,0,0,2"></TextBlock>
+                            <Grid Name="marginRight" Width="10" Background="Transparent"></Grid>
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="NormalImage" Value="{x:Null}">
+                            <Setter TargetName="marginLeft" Property="Width" Value="8" />
+                            <Setter TargetName="spereator" Property="Width" Value="0" />
+                            <Setter TargetName="marginRight" Property="Width" Value="8" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="img" Property="Source" Value="{Binding HoverImage, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="txt" Property="Foreground" Value="#FF0794E5"/>
+                        </Trigger>
+                        <!--<Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="PART_Disabled" Property="Visibility" Value="Visible"></Setter>
+                            -->
+                        <!--<Setter TargetName="img" Property="Source" Value="{Binding PressedImage, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="bg" Property="Background" Value="#FF0F8EE9" />
+                            <Setter TargetName="txt" Property="Foreground" Value="#FFFFFFFF"/>-->
+                        <!--
+                        </Trigger>-->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="img" Property="Source" Value="{Binding DisabledImage, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="txt" Property="Foreground" Value="#FF999999"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--数据源按钮-->
+    <Style x:Key="dataSourceIconButton" TargetType="{x:Type contols:IconButton}">
+        <Setter Property="ImageSize" Value="16"></Setter>
+        <Setter Property="Background" Value="#FF0794E5"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Width" Value="110" />
+        <Setter Property="Height" Value="33" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type contols:IconButton}">
+                    <Border Name="bg" BorderThickness="0" CornerRadius="0" Background="{TemplateBinding Background}">
+                        <Grid>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Image Name="img" Source="{TemplateBinding NormalImage}" Height="{TemplateBinding ImageSize}"/>
+                                <Grid Name="spereator" Width="8" Background="Transparent"></Grid>
+                                <TextBlock Name="txt" Text="{TemplateBinding Content}" 
+                                   FontFamily="{TemplateBinding FontFamily}" 
+                                   FontSize="{TemplateBinding FontSize}" 
+                                   FontStretch="{TemplateBinding FontStretch}" 
+                                   FontStyle="{TemplateBinding FontStyle}" 
+                                   FontWeight="{ TemplateBinding FontWeight}" 
+                                   Foreground="{TemplateBinding Foreground}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="0,0,0,2"></TextBlock>
+                            </StackPanel>
+                            <Grid x:Name="PART_Disabled" Visibility="Collapsed" Background="Black" Opacity="0.4"></Grid>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="NormalImage" Value="{x:Null}">
+                            <Setter TargetName="spereator" Property="Width" Value="0" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF0F8EE9" />
+                            <Setter Property="Foreground" Value="#FFDDDDDD"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="PART_Disabled" Property="Visibility" Value="Visible"></Setter>
+                            <Setter TargetName="txt" Property="Foreground" Value="#FFFFFFFF"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="img" Property="Source" Value="{Binding DisabledImage, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--下划线按钮-->
+    <Style x:Key="underLineIconButton" TargetType="{x:Type contols:IconButton}">
+        <Setter Property="ImageSize" Value="16"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Width" Value="110"></Setter>
+        <Setter Property="Height" Value="30"></Setter>
+        <Setter Property="Margin" Value="1,0,0,0"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type contols:IconButton}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border Name="bg" BorderThickness="0" Background="#FF2A3143">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Image Name="img" Source="{TemplateBinding NormalImage}" Height="{TemplateBinding ImageSize}"/>
+                                <Grid Name="spereator" Width="4" Background="Transparent"></Grid>
+                                <TextBlock Name="txt" Text="{TemplateBinding Content}" 
+                                   FontFamily="{TemplateBinding FontFamily}" 
+                                   FontSize="{StaticResource advancedFontSize}" 
+                                   FontStretch="{TemplateBinding FontStretch}" 
+                                   FontStyle="{TemplateBinding FontStyle}" 
+                                   FontWeight="{ TemplateBinding FontWeight}" 
+                                   Foreground="{TemplateBinding Foreground}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="0,0,0,2"></TextBlock>
+                            </StackPanel>
+                        </Border>
+                        <Border x:Name="PART_UnderLine" Grid.Row="1" Height="3" Background="{TemplateBinding Background}"></Border>
+                        <Grid Grid.RowSpan="2" x:Name="PART_Disabled" Visibility="Collapsed" Background="Black" Opacity="0.4"></Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="NormalImage" Value="{x:Null}">
+                            <!--<Setter TargetName="marginLeft" Property="Width" Value="8" />-->
+                            <Setter TargetName="spereator" Property="Width" Value="0" />
+                            <!--<Setter TargetName="marginRight" Property="Width" Value="8" />-->
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="img" Property="Source" Value="{Binding HoverImage, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="txt" Property="Foreground" Value="{Binding Background, ElementName=PART_UnderLine}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="bg" Property="Background" Value="Black" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="PART_Disabled" Property="Visibility" Value="Visible"></Setter>
+                            <!--<Setter TargetName="img" Property="Source" Value="{Binding DisabledImage, RelativeSource={RelativeSource Mode=TemplatedParent}}" />-->
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--文字置底按钮-->
+    <Style x:Key="BottomTextIconButton" TargetType="{x:Type contols:IconButton}">
+        <Setter Property="ImageSize" Value="16"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Width" Value="50"></Setter>
+        <Setter Property="Height" Value="100"></Setter>
+        <Setter Property="Margin" Value="1,0,0,0"></Setter>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type contols:IconButton}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border Name="bg" BorderThickness="0" Background="Transparent">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                                <Image Name="img" Source="{TemplateBinding NormalImage}" Height="{TemplateBinding ImageSize}"/>
+                                <Grid Name="spereator" Width="4" Background="Transparent"></Grid>
+                                <TextBlock Name="txt" Text="{TemplateBinding Content}" 
+                                   FontFamily="{TemplateBinding FontFamily}" 
+                                   FontSize="12" 
+                                   FontStretch="{TemplateBinding FontStretch}" 
+                                   FontStyle="{TemplateBinding FontStyle}" 
+                                   FontWeight="{ TemplateBinding FontWeight}" 
+                                   Foreground="{TemplateBinding Foreground}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="0,5,0,2"></TextBlock>
+                            </StackPanel>
+                        </Border>
+                        <Border x:Name="PART_UnderLine" Grid.Row="1" Height="3" BorderThickness="0" Background="{TemplateBinding Background}"></Border>
+                        <Grid Grid.RowSpan="2" x:Name="PART_Disabled" Visibility="Collapsed" Background="Black" Opacity="0.4"></Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="NormalImage" Value="{x:Null}">
+                            <!--<Setter TargetName="marginLeft" Property="Width" Value="8" />-->
+                            <Setter TargetName="spereator" Property="Width" Value="0" />
+                            <!--<Setter TargetName="marginRight" Property="Width" Value="8" />-->
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="img" Property="Source" Value="{Binding HoverImage, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="txt" Property="Foreground" Value="#1296db"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="bg" Property="Background" Value="Transparent" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="PART_Disabled" Property="Visibility" Value="Visible"></Setter>
+                            <!--<Setter TargetName="img" Property="Source" Value="{Binding DisabledImage, RelativeSource={RelativeSource Mode=TemplatedParent}}" />-->
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--文字选中按钮-->
+    <Style x:Key="textCheckButton" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Background" Value="#444444"></Setter>
+        <Setter Property="Height" Value="{StaticResource inputControlHeight}"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="BorderBrush" Value="Blue"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid>
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="3">
+                            <TextBlock Name="PART_Txt" Margin="5,0" Text="{Binding Content, RelativeSource={RelativeSource Mode=TemplatedParent}}" Foreground="{TemplateBinding Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                        <Border x:Name="PART_Disabled" Background="Black" Opacity="0.4" Visibility="Collapsed"></Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" Value="Blue"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderThickness" Value="1"></Setter>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="PART_Disabled" Property="Visibility" Value="Visible"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--频谱切换开关-->
+    <Style x:Key="SpectrumSwitch" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Background" Value="#FF111111"></Setter>
+        <Setter Property="Width" Value="100"></Setter>
+        <Setter Property="Height" Value="20"></Setter>
+        <Setter Property="BorderBrush" Value="#979797"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{StaticResource spectrumBarFontColor}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <!--<Setter Property="Padding" Value="1"/>-->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.ColumnSpan="2" x:Name="PART_Border" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="3" SnapsToDevicePixels="True">
+                        </Border>
+                        <Border Grid.Column="0" x:Name="PART_Switch_Left" Background="#FF2D2D2D" SnapsToDevicePixels="True" CornerRadius="3,0,0,3">
+                            <TextBlock Text="时频图" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                        </Border>
+                        <Border Grid.Column="1" x:Name="PART_Switch_Right" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" CornerRadius="0,3,3,0">
+                            <TextBlock Text="频谱图" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!--<Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="PART_Switch_Left" Property="Background" Value="White"/>
+                            <Setter TargetName="PART_Switch_Right" Property="Background" Value="White"/>
+                        </Trigger>-->
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="PART_Switch_Left" Property="Background" Value="#FF111111"/>
+                            <Setter TargetName="PART_Switch_Right" Property="Background" Value="#FF2D2D2D"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="BorderBrush" Value="#666666"></Setter>
+                            <Setter TargetName="PART_Switch_Left" Property="Background" Value="#666666"/>
+                            <Setter TargetName="PART_Switch_Right" Property="Background" Value="#666666"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--检测列表统计状态按钮-->
+    <Style x:Key="statusCheckButton" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Height" Value="16"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>
+                        <Border x:Name="PART_Disabled" Background="Black" Opacity="0.4" Visibility="Collapsed"></Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" Value="#004F7A"></Setter>
+                        </Trigger>
+                        <!--<Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF666666"/>
+                        </Trigger>-->
+                        <!--<Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FF000000"/>
+                        </Trigger>-->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="PART_Disabled" Property="Visibility" Value="Visible"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--开关按钮-->
+    <Style x:Key="switch" TargetType="{x:Type contols:HighlightedSwitch}">
+        <Setter Property="Background" Value="Black"></Setter>
+        <Setter Property="Width" Value="40"></Setter>
+        <Setter Property="Height" Value="14"></Setter>
+        <Setter Property="BorderBrush" Value="#979797"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <!--<Setter Property="Padding" Value="1"/>-->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type contols:HighlightedSwitch}">
+                    <Grid>
+                        <Border x:Name="PART_Border" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="3" SnapsToDevicePixels="True">
+                        </Border>
+                        <Border x:Name="PART_Switch_Left" Width="20" Height="14" HorizontalAlignment="Left" Background="#999999" SnapsToDevicePixels="True" CornerRadius="3,0,0,3"></Border>
+                        <Border x:Name="PART_Switch_Right" Visibility="Collapsed" Width="20" Height="14" HorizontalAlignment="Right" Background="#D8D8D8" SnapsToDevicePixels="True" CornerRadius="0,3,3,0"></Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="PART_Switch_Left" Property="Background" Value="White"/>
+                            <Setter TargetName="PART_Switch_Right" Property="Background" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="PART_Switch_Left" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_Switch_Right" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="BorderBrush" Value="#666666"></Setter>
+                            <Setter TargetName="PART_Switch_Left" Property="Background" Value="#666666"/>
+                            <Setter TargetName="PART_Switch_Right" Property="Background" Value="#666666"/>
+                        </Trigger>
+                        <Trigger Property="IsHighlighted" Value="true">
+                            <Setter TargetName="PART_Switch_Left" Property="Background" Value="#0CD562"/>
+                            <Setter TargetName="PART_Switch_Right" Property="Background" Value="#0CD562"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,40 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:local="clr-namespace:BlueOrigin.Wpf.Controls">
+
+    <Style TargetType="{x:Type local:ProgressBar}">
+        <Setter Property="Value" Value="0"></Setter>
+        <Setter Property="Value2" Value="0"></Setter>
+        <Setter Property="Minimum" Value="0"></Setter>
+        <Setter Property="Maximum" Value="100"></Setter>
+        <Setter Property="Ticks" Value="0.01"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="BorderBrush" Value="#FFEBEBEB"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="FontSize" Value="9"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:ProgressBar}">
+                    <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="1" Height="{TemplateBinding Height}">
+                        <Grid Name="bg" Background="{TemplateBinding Background}">
+                            <Rectangle Name="progress2" Width="{TemplateBinding Value2Width}" Fill="Green" HorizontalAlignment="Left"></Rectangle>
+                            <Rectangle Name="progress" Width="{TemplateBinding ValueWidth}" Fill="#FF0F8EE9" HorizontalAlignment="Left"></Rectangle>
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                                <TextBlock Foreground="White" FontSize="{TemplateBinding FontSize}" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Value}"></TextBlock>
+                                <TextBlock Foreground="White" FontSize="{TemplateBinding FontSize}" Text="%"></TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="progress" Property="Fill" Value="#FF757575"></Setter>
+                            <Setter TargetName="progress2" Property="Fill" Value="#FF454545"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

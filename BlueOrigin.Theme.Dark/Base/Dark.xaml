@@ -1,0 +1,63 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:BlueOrigin.Theme.Dark"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
+    <!--本字典提供程序一些通用的基础颜色、样式、图片-->
+
+    <!--颜色FF1E223D-->  
+    <SolidColorBrush x:Key="windowBorderBrush" Color="#FF0794E5"/>
+    <SolidColorBrush x:Key="windowBorderBrushEx" Color="#FF333961"/>
+    <SolidColorBrush x:Key="windowFontColor" Color="#FF0FA7FF"/>
+    <SolidColorBrush x:Key="tileBrush"  Color="#FF1E222D"/>
+    <SolidColorBrush x:Key="normalFontColor" Color="#CCCCCC"/>
+    <SolidColorBrush x:Key="highLightFontColor" Color="White"/>
+    <SolidColorBrush x:Key="infoFontColor" Color="#FF999999"/>
+    <SolidColorBrush x:Key="splitLineColor" Color="#FF161616"/>
+    <SolidColorBrush x:Key="spectrumBarColor" Color="#FF1E222D"/>
+    <SolidColorBrush x:Key="tabBackGroundColor" Color="#FF101218"/>
+    <SolidColorBrush x:Key="scorllerBackGroundColor" Color="#FF181B24"/>
+    <SolidColorBrush x:Key="scorllerDisabledBackGroundColor" Color="#FF141720"/>
+    <SolidColorBrush x:Key="tabFontColor" Color="#FFE7E7E7"/>
+    <SolidColorBrush x:Key="spectrumBarFontColor" Color="#CCCCCC"/>
+    <SolidColorBrush x:Key="normalBackGroundColor" Color="Black"/>
+    <SolidColorBrush x:Key="pannelBackGroundColor" Color="#FF0F1117"/>
+    <SolidColorBrush x:Key="pannelHeaderColor" Color="#FF2F3241"/>
+    <SolidColorBrush x:Key="statusInfoColor" Color="#FF1E222D"/>
+    <SolidColorBrush x:Key="previewPannelBackGroundColor" Color="#FFEEEEEE"/>
+    <SolidColorBrush x:Key="normalTitleColor" Color="#FF007ACC"/>
+    <SolidColorBrush x:Key="ListItemDisabledBrush" Color="#FF666666"/>
+    
+    <LinearGradientBrush x:Key="previewTitleBrush" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#FFF2F2F2" Offset="0"/>
+        <GradientStop Color="#FFC5C5C5" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="separatorBrush" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#FFD8D8D8" Offset="0"/>
+        <GradientStop Color="#FF979797" Offset="0.5"/>
+        <GradientStop Color="#FFD8D8D8" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <sys:Double x:Key="pannelTitleFontSize">12</sys:Double>
+    <sys:Double x:Key="normalFontSize">12</sys:Double>
+    <sys:Double x:Key="advancedFontSize">14</sys:Double>
+    <sys:Double x:Key="inputControlHeight">22</sys:Double>
+    <sys:Double x:Key="windowTitleHeight">28</sys:Double>
+    <sys:Double x:Key="windowTitleFontSize">14</sys:Double>
+
+    <Color x:Key="MenuShadowColor" A="0" B="0" R="0" G="0"/>
+    <SolidColorBrush x:Key="MenuItemBackgroud" Color="Black"/>
+    <SolidColorBrush x:Key="MenuItemMouseOverColor" Color="DarkGray"/>
+    <SolidColorBrush x:Key="MenuPanelBorderThicknessColor" Color="DarkGray"/>
+
+    <!--输入控件-->
+    <Style x:Key="inputControlBaseStyle">
+        <Setter Property="FrameworkElement.VerticalAlignment" Value="Center"/>
+        <Setter Property="FrameworkElement.Height" Value="{StaticResource inputControlHeight}"/>
+        <Setter Property="Control.FontSize" Value="{StaticResource normalFontSize}"/>
+    </Style>
+
+    <!--图片-->
+    <Image x:Key="icoStart" Width="18" Height="18" Source="pack://application:,,,/Image/icon_start_green_36px.png"></Image>
+    <Image x:Key="icoStop" Width="18" Height="18" Source="pack://application:,,,/Image/icon_stop_dark_36px.png"></Image>
+</ResourceDictionary>
