@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using ModuleA.ViewModels;
+using System.ComponentModel.Composition;
+using System.Windows.Controls;
 
 namespace ModuleA.Views
 {

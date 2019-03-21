@@ -1,14 +1,11 @@
 ﻿using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.Composition;
 using UsingCompositeCommands.Core;
 
 namespace X_Signal.Main.ViewModels
 {
-    public class MainViewModel : BindableBase
+    [Export(typeof(MainViewVM))]
+    public class MainViewVM : BindableBase
     {
         private string _title = "Prism Unity Application";
         public string Title
@@ -23,8 +20,7 @@ namespace X_Signal.Main.ViewModels
             get { return _applicationCommands; }
             set { SetProperty(ref _applicationCommands, value); }
         }
-
-        public MainViewModel(IApplicationCommands applicationCommands)
+        public MainViewVM(IApplicationCommands applicationCommands)
         {
             ApplicationCommands = applicationCommands;
         }

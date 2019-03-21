@@ -1,15 +1,16 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using System;
+using System.ComponentModel.Composition;
 using UsingCompositeCommands.Core;
 
 namespace ModuleA.ViewModels
 {
-    public class TabViewModel : BindableBase
+    public class TabViewVM : BindableBase
     {
         IApplicationCommands _applicationCommands;
 
-        private string _title;
+        private string _title = "TabViewVM Title";
         public string Title
         {
             get { return _title; }
@@ -32,7 +33,7 @@ namespace ModuleA.ViewModels
 
         public DelegateCommand UpdateCommand { get; private set; }
 
-        public TabViewModel(IApplicationCommands applicationCommands)
+        public TabViewVM(IApplicationCommands applicationCommands)
         {
             _applicationCommands = applicationCommands;
 
@@ -44,6 +45,6 @@ namespace ModuleA.ViewModels
         private void Update()
         {
             UpdateText = $"Updated: {DateTime.Now}";
-        }       
+        }
     }
 }
