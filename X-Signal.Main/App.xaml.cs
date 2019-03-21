@@ -23,8 +23,6 @@ namespace X_Signal.Main
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
             moduleCatalog.AddModule<ModuleAModule>();
-            //moduleCatalog.AddModule<NarrowBandModule>();
-            //moduleCatalog.AddModule<InfomationModule>();
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

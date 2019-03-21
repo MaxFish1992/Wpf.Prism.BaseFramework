@@ -20,9 +20,15 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
         <Button Content="Save" Margin="10" Command="{Binding ApplicationCommands.SaveCommand}"/>
 
         <TabControl Grid.Row="1" Margin="10" prism:RegionManager.RegionName="ContentRegion" />
+
+        <ContentControl Grid.Column="1" Grid.RowSpan="2" Margin="10" prism:RegionManager.RegionName="MainRegion"></ContentControl>
     </Grid>
 </Window>
