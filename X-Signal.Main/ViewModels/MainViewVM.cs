@@ -4,7 +4,6 @@ using UsingCompositeCommands.Core;
 
 namespace X_Signal.Main.ViewModels
 {
-    [Export(typeof(MainViewVM))]
     public class MainViewVM : BindableBase
     {
         private string _title = "Prism Unity Application";
